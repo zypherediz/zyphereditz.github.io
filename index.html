@@ -1,133 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to My Downloads</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fluent Design Welcome</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
 
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  /* Fluent colors */
+  :root {
+    --bg-color: #252525;
+    --card-bg: #333333;
+    --accent-color: #0078D7;
+    --text-color: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.6);
+  }
 
-    #welcome, #downloads {
-      position: absolute;
-      width: 100%;
-      max-width: 600px;
-      padding: 20px;
-      box-sizing: border-box;
-      text-align: center;
-      transition: opacity 0.8s ease;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    #downloads {
-      opacity: 0;
-      pointer-events: none;
-      color: #222;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    #welcome.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
+  .container {
+    background: var(--card-bg);
+    padding: 40px 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    width: 360px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease;
+  }
+  .container:hover {
+    box-shadow: 0 12px 48px var(--shadow-color);
+  }
 
-    #welcome.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
+  h1 {
+    margin: 0 0 20px;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--accent-color);
+  }
 
-    #downloads.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translate(-50%, -50%);
-    }
+  p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    color: #ccc;
+  }
 
-    h1 {
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
 
-    button {
-      background: #2575fc;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.6);
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: #1851c8;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      color: #333;
-      text-align: left;
-    }
-
-    li {
-      margin: 15px 0;
-      font-weight: 500;
-    }
-
-    a {
-      color: #2575fc;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  button {
+    flex: 1;
+    background-color: var(--accent-color);
+    border: none;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 120, 215, 0.6);
+    transition: background-color 0.25s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #005a9e;
+  }
+  button:active {
+    background-color: #004578;
+  }
+</style>
 </head>
 <body>
 
-  <section id="welcome" class="visible">
-    <h1>Welcome to My Downloads</h1>
-    <p>Click the button below to see available files.</p>
-    <button id="enterBtn">See Downloads</button>
-  </section>
-
-  <section id="downloads">
-    <h1>Available Downloads</h1>
-    <ul>
-      <li><a href="files/my-software.zip" download>My Software (zip)</a></li>
-      <li><a href="files/another-tool.exe" download>Another Tool (exe)</a></li>
-      <li><a href="files/readme.txt" download>Read Me</a></li>
-    </ul>
-  </section>
-
-  <script>
-    const enterBtn = document.getElementById('enterBtn');
-    const welcome = document.getElementById('welcome');
-    const downloads = document.getElementById('downloads');
-
-    enterBtn.addEventListener('click', () => {
-      welcome.classList.add('hidden');
-      welcome.classList.remove('visible');
-      downloads.classList.add('visible');
-    });
-  </script>
+  <div class="container">
+    <h1>Welcome</h1>
+    <p>Select your platform or tutorials</p>
+    <div class="btn-group">
+      <button id="btn-windows">Windows</button>
+      <button id="btn-mac">Mac</button>
+      <button id="btn-tutorials">Tutorials</button>
+    </div>
+  </div>
 
 </body>
 </html>
+
