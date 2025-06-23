@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to My Downloads</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #welcome, #downloads {
+      position: absolute;
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      transition: opacity 0.8s ease;
+    }
+
+    #downloads {
+      opacity: 0;
+      pointer-events: none;
+      color: #222;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #welcome.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #welcome.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #downloads.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #2575fc;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.6);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #1851c8;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #333;
+      text-align: left;
+    }
+
+    li {
+      margin: 15px 0;
+      font-weight: 500;
+    }
+
+    a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="welcome" class="visible">
+    <h1>Welcome to My Downloads</h1>
+    <p>Click the button below to see available files.</p>
+    <button id="enterBtn">See Downloads</button>
+  </section>
+
+  <section id="downloads">
+    <h1>Available Downloads</h1>
+    <ul>
+      <li><a href="files/my-software.zip" download>My Software (zip)</a></li>
+      <li><a href="files/another-tool.exe" download>Another Tool (exe)</a></li>
+      <li><a href="files/readme.txt" download>Read Me</a></li>
+    </ul>
+  </section>
+
+  <script>
+    const enterBtn = document.getElementById('enterBtn');
+    const welcome = document.getElementById('welcome');
+    const downloads = document.getElementById('downloads');
+
+    enterBtn.addEventListener('click', () => {
+      welcome.classList.add('hidden');
+      welcome.classList.remove('visible');
+      downloads.classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>
